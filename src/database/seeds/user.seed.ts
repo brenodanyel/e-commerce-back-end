@@ -1,17 +1,15 @@
-import { Module } from '@nestjs/common';
-import { InjectModel, MongooseModule } from '@nestjs/mongoose';
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { PasswordHash } from '../../helpers/passwordHash';
-import { User, UserSchema } from '../schemas/user.schema';
+import { User } from '../schemas/user.schema';
 
-@Module({
-  imports: [MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])],
-})
+@Injectable()
 export class UserSeed {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  async onModuleInit() {
+  async seed() {
     const users: User[] = [
       {
         username: 'admin',
@@ -21,15 +19,11 @@ export class UserSeed {
     ];
 
     for (const user of users) {
-      const userExists = await this.userModel.findOne({
-        $or: [{ username: user.username }, { email: user.email }],
-      });
+      const userExists = await this.userModel.findOne({ username: user.username });
 
       if (!userExists) {
         await this.userModel.create(user);
       }
     }
-
-    console.log('Users seed completed successfully');
   }
 }
