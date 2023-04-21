@@ -10,6 +10,6 @@ export class UserPresenter {
     this.id = input._id.toString();
     this.username = input.username;
     this.email = input.email;
-    this.password = input.password;
+    // this.password = input.password;
   }
 }
