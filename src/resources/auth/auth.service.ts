@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { PasswordHash } from 'src/helpers/passwordHash';
 import { LoginDto } from './dtos/login.dto';
-import { User } from '../../schemas/user.schema';
+import { User } from '../../database/schemas/user.schema';
 import { Model } from 'mongoose';
 import { RegisterDto } from './dtos/register.dto';
 

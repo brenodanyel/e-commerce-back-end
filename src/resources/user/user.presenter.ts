@@ -1,4 +1,4 @@
-import { UserDocument } from '../../schemas/user.schema';
+import { UserDocument } from '../../database/schemas/user.schema';
 
 export class UserPresenter {
   public id: string;
