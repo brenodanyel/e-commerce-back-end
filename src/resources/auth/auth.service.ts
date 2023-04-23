@@ -6,6 +6,7 @@ import { LoginDto } from './dtos/login.dto';
 import { User } from '../../database/schemas/user.schema';
 import { Model } from 'mongoose';
 import { RegisterDto } from './dtos/register.dto';
+import { UserPresenter } from '../user/user.presenter';
 
 @Injectable()
 export class AuthService {
@@ -31,6 +32,7 @@ export class AuthService {
 
     return {
       token: await this.jwtService.signAsync({ id: user._id.toString() }),
+      user: new UserPresenter(user),
     };
   }
 
@@ -50,6 +52,7 @@ export class AuthService {
 
     return {
       token: await this.jwtService.signAsync({ id: user._id.toString() }),
+      user: new UserPresenter(user),
     };
   }
 }
