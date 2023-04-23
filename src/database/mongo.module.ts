@@ -9,6 +9,8 @@ const {
   MONGO_DB_PASSWORD = 'root',
 } = process.env;
 
+console.log(process.env);
+
 @Module({
   imports: [
     MongooseModule.forRoot(MONGO_DB_CONNECTION_STRING, {
