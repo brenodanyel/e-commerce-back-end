@@ -7,7 +7,11 @@ const { PORT = 3001 } = process.env;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    cors: true,
+    cors: {
+      origin: '*',
+      allowedHeaders: '*',
+      methods: '*',
+    },
   });
 
   app.useGlobalPipes(
