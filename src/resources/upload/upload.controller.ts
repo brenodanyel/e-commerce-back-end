@@ -20,6 +20,7 @@ export class UploadController {
     )
     file: Express.Multer.File,
   ) {
+    console.log(file);
     return this.uploadService.uploadFile(file);
   }
 }
