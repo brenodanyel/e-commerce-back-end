@@ -29,6 +29,10 @@ export class AWS_S3_HELPER {
     };
     fileId: string;
   }) {
+    console.log({ params });
+    console.log(params.file.name);
+    console.log(params.file.name.split);
+
     const extension = params.file.name.split('.').at(-1);
 
     const date = new Date();
