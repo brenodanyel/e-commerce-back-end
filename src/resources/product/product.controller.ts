@@ -8,7 +8,6 @@ import { UpdateProductDto } from './dtos/update-product.dto';
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @UseGuards(AuthGuard)
   @Get('/')
   async findProducts() {
     return this.productService.findProducts();
